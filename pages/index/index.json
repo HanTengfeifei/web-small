@@ -1,0 +1,12 @@
+{
+  "backgroundTextStyle": "light",
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTitleText": "首页",
+  "navigationBarTextStyle": "black",
+  "disableScroll":true,
+  "enablePullDownRefresh":true,
+  "usingComponents": {
+      "easy-modal": "/component/easyModal/easy/easyModal",
+      "base-modal": "/component/easyModal/base/baseModal"
+    }
+}

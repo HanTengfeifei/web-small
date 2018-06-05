@@ -1,0 +1,283 @@
+<!--index.wxml-->
+<import src="../../hud/hud.wxml" />
+<template is="isHUD" data="{{...hud.infos}}" />
+<!-- <easy-modal id="easyModal" title="装车量{{model.sendNum}}" bind:cancelEvent="_cancelEvent" bind:confirmEvent="_confirmEventFirst">
+  <view class='modal-content'>
+    <image src="{{files}}" style='width:100rpx;heigth:100rpx'></image>
+  </view>
+</easy-modal>
+
+<easy-modal id="easyModalSecond" title="卸车量{{model.recvBill}}" bind:cancelEvent="_cancelEvent" bind:confirmEvent="_confirmEventSecond">
+  <view class='modal-content'>
+    <image src="{{files}}"></image>
+  </view>
+</easy-modal> -->
+
+<!-- <easy-modal id="easyModalThird" title="装车量{{model.sendNum}}" confirmText="重新上传" bind:cancelEvent="_cancelEvent" bind:confirmEvent="_confirmEventThird">
+  <view class='modal-content'>
+    <image src="{{model.sendBill}}"></image>
+  </view>
+</easy-modal> -->
+<image src='../images/newTwoVersion/top_head.png' mode='widthFix' class='my-head'></image>
+<scroll-view scroll-y="true" class='my-srcoll'>
+
+  <view class='order_process'>
+    <view class='process_wrap' wx:for="{{processData}}" wx:key="">
+      <image src='{{item.image}}' style='width:120rpx;height:46rpx'></image>
+      <text class='process_name' style='color:{{item.color}};opacity:{{item.opacity}}'>{{item.name}}</text>
+      <!-- <text class='process_name'>{{item.name}}</text> -->
+      <view class='process'>
+        <view class='process_line' style="background:{{item.start}}"></view>
+        <image class='process_icon' src="{{item.icon}}"></image>
+        <view class='process_line' style="background:{{item.end}}"></view>
+      </view>
+    </view>
+  </view>
+
+  <view class='car-code-num'>
+    出车单编号：{{model.carCode}}
+  </view>
+  <view style='display:flex;justify-content:space-around' class='show-tickt'>
+    <view style='display:inline-block' style='overflow:hidden'>
+      <view class='car-goods-title'>
+        装货点
+      </view>
+      <view class='addr-name'>
+        {{model.faCity}}{{model.faCounty}}
+      </view>
+      <view class='car-goods-title'>
+        {{model.sendDate}}
+      </view>
+    </view>
+    <view style='display:inline-block;transform:translate(0,30%)'>
+      <image src='../images/newTwoVersion/car_model.png' mode="widthFix" style='width:200rpx;height:51rpx'>
+      </image>
+    </view>
+    <view style='display:inline-block' style='overflow:hidden'>
+      <view class='car-goods-title'>
+        卸货点
+      </view>
+      <view class='addr-name'>
+        {{model.jaCity}}{{model.jaCounty}}
+      </view>
+      <view class='car-goods-title'>
+        {{model.recvDate}}
+      </view>
+    </view>
+  </view>
+  <view style='background:#fff'>
+    <view class='load-num'>
+      <view class='my-left'>
+        <text class='my-text' style='margin-right:50rpx;'>运载量</text>
+        <text class='my-text' style='color: #4A4A4A;'>{{model.weight}}吨</text>
+      </view>
+    </view>
+    <block wx:if="{{openView}}">
+      <view class='load-num'>
+        <view class='my-right' bindtap='callPhone' id='phone1' data-phoneName="{{phoneName}}">
+          <image src='../images/newTwoVersion/phone.png' mode="widthFix" style='width:20rpx;height:70rpx'>
+          </image>
+          <text class='my-text' style='color:#4A4A4A;margin-left:15rpx;'>{{phoneName}}</text>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <view class="expand-open" style="margin-bottom:10rpx" bindtap='openViewTap' wx:if="{{openView}}">
+    <image src='../images/newTwoVersion/dropdwon.png' mode="widthFix" style='width:40rpx;height:40rpx;vertical-align:middle'>
+    </image>
+  </view>
+
+  <block wx:if="{{!openView}}">
+    <view class='detail-message' style="border-top:1px solid #EEEEEE;border-bottom:1px solid #EEEEEE">
+      <text class='my-text' style='margin-right:83rpx;' style='margin-right:50rpx;'>装车点</text>
+      <text class='my-text' style='color: #4A4A4A;'>{{model.sendAddr}}</text>
+    </view>
+    <view class='detail-message' style='padding:0 30rpx 20rpx 30rpx;border-bottom:1px solid #EEEEEE'>
+      <text class='my-text' style='margin-right:83rpx;' style='margin-right:50rpx;'>卸车点</text>
+      <text class='my-text' style='color: #4A4A4A;'>{{model.recvAddr}}</text>
+    </view>
+    <view class='load-num' style="border-bottom:1px solid #EEEEEE">
+      <view class='my-left'>
+        <text class='my-text' style='margin-right:83rpx;'>车头</text>
+        <text class='my-text' style='color: #4A4A4A;'>{{model.carHead}}</text>
+      </view>
+    </view>
+    <view class='load-num' style="border-bottom:1px solid #EEEEEE">
+      <view class='my-right' style='text-align:left'>
+        <text class='my-text' style='margin-right:83rpx;'>车挂</text>
+        <text class='my-text' style='color: #4A4A4A;'>{{model.carBody}}</text>
+      </view>
+    </view>
+
+    <view class='my-dd-phone'>
+      <view class='process_wrap' bindtap='callPhone' id='phone2'>
+        <image src='../images/newTwoVersion/phone.png' mode="widthFix" style='width:35rpx;height:70rpx'>
+        </image>
+        <text class='my-text'>装车点</text>
+      </view>
+      <view class='process_wrap' bindtap='callPhone' id='phone3'>
+        <image src='../images/newTwoVersion/phone.png' mode="widthFix" style='width:35rpx;height:70rpx'>
+        </image>
+        <text class='my-text'>调度</text>
+      </view>
+      <view class='process_wrap' bindtap='callPhone' id='phone4'>
+        <image src='../images/newTwoVersion/phone.png' mode="widthFix" style='width:35rpx;height:70rpx'>
+        </image>
+        <text class='my-text'>卸车点</text>
+      </view>
+    </view>
+  </block>
+  <view class="expand-close" wx:if="{{!openView}}" bindtap='openViewTap'>
+    <image src='../images/newTwoVersion/dropdwon.png' mode="widthFix" style='width:40rpx;height:40rpx;vertical-align:middle'>
+    </image>
+  </view>
+  <block wx:if="{{zhuangChe}}">
+    <view class="enter-goods-num">
+      <text class='my-text' style='color:#4A4A4A;margin-right:50rpx;'>装车量</text>
+      <input placeholder='请手动输入装车量' placeholder-class="dd-input-placeholder" class='dd-input' type="digit" bindinput="zhuangCheNum"></input>
+      <text class='my-text' style='color:#4A4A4A;margin-right:50rpx;'>（单位：吨）</text>
+    </view>
+
+    <view class="my-upload">
+      <view class='my-upload-img' bindtap="chooseImage">
+        <!-- <image src="{{files.length==0 ?'../images/newTwoVersion/upload.png':files}}" mode="widthFix" style='width:200rpx;height:130rpx;'>
+        </image> -->
+        <image src="{{files.length==0 ?'../images/newTwoVersion/Wechat1.png':files}}" style='width:100%;height:220rpx'>
+        </image>
+        <view class='upload-zoom' wx:if="{{files.length!=0}}">
+          <view class="my-upload-zoom-text" catchtap='previewImage'>点击预览大图</view>
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <block wx:if="{{xieChe}}">
+    <view class="enter-goods-num">
+      <text class='my-text' style='color:#4A4A4A;margin-right:50rpx;'>装车量</text>
+      <text class='dd-input' style='font-size:30rpx;color:#2783f9;width:auto'>{{model.sendNum}}</text>
+      <text class='my-text' style='color:#4A4A4A;margin-right:50rpx;'>（单位：吨）</text>
+    </view>
+
+    <view class="enter-goods-num" style='margin-top:0;border-top:1px solid #eee'>
+      <text class='my-text' style='color:#4A4A4A;margin-right:50rpx;'>卸车量     </text>
+      <input placeholder='请手动输入卸车量' placeholder-class="dd-input-placeholder" class='dd-input' type="digit" bindinput="xieCheNum"></input>
+      <text class='my-text' style='color:#4A4A4A;margin-right:50rpx;'>（单位：吨）</text>
+    </view>
+
+    <view class="my-upload">
+      <view class='my-upload-img' bindtap="chooseImage">
+        <image src="{{files.length==0 ?'../images/newTwoVersion/Wechat.png':files}}" style='width:100%;height:220rpx'>
+        </image>
+        <view class='upload-zoom' wx:if="{{files.length!=0}}">
+          <view class="my-upload-zoom-text" catchtap='previewImage'>点击预览大图</view>
+        </view>
+      </view>
+    </view>
+  </block>
+
+
+  <!-- <view class="kind-list__item">
+    <view id="1" class="weui-flex kind-list__item-hd {{open ?'kind-list__item-hd_show' : ''}}" bindtap="kindToggle">
+      <view class="weui-flex__item">详细信息</view>
+      <image class="kind-list__img" src="../images/info.png"></image>
+    </view>
+     <view class="kind-list__item-bd {{open ? 'kind-list__item-bd_show' : ''}}">
+      <view class="weui-cells {{open ? 'weui-cells_show' : ''}}">
+        <view>
+          编号:{{model.carCode}}
+        </view>
+        <view>
+          运载量:{{model.weight}}
+        </view>
+        <view style='display:flex;justify-content:space-around'>
+          <view style='display:inline-block'>
+            <view>
+              <image src='../images/phone.png' style='width:51rpx;height:51rpx'>
+              </image>
+            </view>
+            <view>
+              联系人1
+            </view>
+          </view>
+          <view style='display:inline-block'>
+            <view>
+              <image src='../images/phone.png' style='width:51rpx;height:51rpx'>
+              </image>
+            </view>
+            <view>
+              联系人2
+            </view>
+
+          </view>
+          <view style='display:inline-block'>
+            <view>
+              <image src='../images/phone.png' style='width:51rpx;height:51rpx'>
+              </image>
+            </view>
+            <view>
+              联系人3
+            </view>
+          </view>
+        </view>
+        <view style='display:block'>
+          车头: {{model.carHead}} 车挂：{{model.carBody}}
+        </view>
+      </view>
+    </view> 
+  </view> -->
+  <!-- <view style='display:flex;justify-content:space-around'>
+    <image style='width:300rpx;height:300rpx;background-color:#FFFF00' bindtap='clickCancel'></image>
+    <image style='width:300rpx;height:300rpx;background-color:#FFFF00' bindtap='clickOrder'></image>
+  </view>
+  <view style='display:flex;justify-content:space-around'>
+    <image style='width:300rpx;height:300rpx;background-color:#FFFF00'
+bindtap='clickDepart'></image>
+  </view> 
+  <view>
+    <text>装车量：</text>
+    <input placeholder="请输入装车量"></input>
+  </view>
+  <view>
+    装车量：xxxx
+    <text style='display:block'>卸车量：</text>
+    <input placeholder="请输入卸车量"></input>
+  </view>
+  <view>
+    <view class="weui-uploader__input-box">
+      <view class="weui-uploader__input" bindtap="chooseImage"></view>
+      <image class="weui-uploader__img" src="{{files}}" mode="aspectFill" />
+    </view>
+  </view>
+  <view>
+    <button style='display:block' bindtap='clickSubmit'>
+      上传磅单
+    </button>
+  </view> -->
+
+</scroll-view>
+
+<block wx:if="{{showBtn}}">
+  <view class='new-login-enter' style='0'>
+    <image class="button" mode="widthFix" src='../images/newTwoVersion/login_enter.png' style='margin-top:30rpx'></image>
+    <button class='enter' bindtap='clickSubmit' style='margin-top:30rpx'>{{btnText}}</button>
+  </view>
+</block>
+<block wx:if="{{!showBtn}}">
+  <view class='new-login-enter' style='margin-top:0' hidden='{{firstShow}}'>
+    <view class='my-dd-jd'>
+      <view class='process_wrap'>
+        <view class='login-enter' style='height:80rpx;'>
+          <image class="button" mode="scaleToFill" src='../images/newTwoVersion/un_login.png' style='height:80rpx'></image>
+          <button class='jd-enter' bindtap='clickCancel'>无 法 接 单</button>
+        </view>
+      </view>
+      <view class='process_wrap'>
+        <view class='login-enter' style='height:80rpx;'>
+          <image class="button" mode="scaleToFill" src='../images/newTwoVersion/login_enter.png' style='height:80rpx;'></image>
+          <button class='jd-enter' bindtap='clickOrder'>接 单 出 发</button>
+        </view>
+      </view>
+    </view>
+  </view>
+</block>

@@ -1,0 +1,23 @@
+<import src="../../hud/hud.wxml" />
+<template is="isHUD" data="{{...hud.infos}}" />
+
+<view class='page'>
+  <image class="login-img" mode="widthFix" src='../images/newTwoVersion/log_in_background.png' style=''></image>
+  <view>
+    <view class='ui-cell'>
+      <input placeholder='请输入手机号' placeholder-class="input-placeholder" style='margin-top: 20rpx;' class='phone-input' type="number" bindinput='phoneInput' maxlength='11' value='{{phone}}'></input>
+      <image class="login-icon phone-icon" mode="aspectFit" src="{{phoneFlag==0?'../images/newTwoVersion/un_login_user.png':'../images/newTwoVersion/login_user.png'}}"></image>
+      <image class="login-icon phone-close" mode="aspectFit" src="{{phoneFlag==0?'':'../images/newTwoVersion/close.png'}}" bindtap='clearAway'></image>
+    </view>
+    <view class='ui-cell' style='margin-top:42rpx'>
+      <input class='code-input phone-input' placeholder='请输入验证码' type="number" bindinput='codeInput' maxlength='4'></input>
+      <image class="login-icon phone-icon" mode="aspectFit" src="{{passFlag==0?'../images/newTwoVersion/un_login_pass.png':'../images/newTwoVersion/login_pass.png'}}"></image>
+      <button style='margin-left:22rpx;padding:5rpx 0;float:right;border-radius:4px;color:#fff' class="{{!isDisabled ? 'btn-default' : 'btn-hover'}}" disabled="{{isDisabled}}"  bindtap='codeTap'>{{btnText}} </button>
+    </view>
+    <view class='login-enter' style='margin-top:42rpx'>
+       <image class="button" mode="widthFix" src='../images/newTwoVersion/login_enter.png' style=''></image> 
+      <!-- <image class="button" mode="widthFix" src='../images/newTwoVersion/un_login.png' style=''></image> -->
+      <button class='enter' bindtap='login'>登 录</button>
+    </view>
+  </view>
+</view>

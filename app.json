@@ -1,0 +1,14 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/index/index",
+    "pages/noData/noData"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "蓝采和",
+    "navigationBarTextStyle": "black",
+    "navigationStyle":"custom"
+  }
+}

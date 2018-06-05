@@ -1,0 +1,8 @@
+<!--pages/noData/noData.wxml-->
+<image src='../images/newTwoVersion/top_head.png' mode='widthFix' class='my-head'></image>
+<view style='backgroud:#fff;'>
+  <view class='no-data'>
+   <image src='../images/newTwoVersion/noData.png' style="width:60%" mode='aspectFit'> 
+  </image>
+  </view>
+</view>

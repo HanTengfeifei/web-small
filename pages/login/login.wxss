@@ -1,0 +1,119 @@
+@import "../../hud/hud.wxss";
+/* pages/register/register.wxss */
+page {
+  height: 100%;
+}
+
+.login-img {
+   width: 100% ;
+  margin-bottom:60rpx;
+}
+
+.ui-cell{
+  height: 80rpx;
+  padding-top: 30rpx;
+  padding: 0 20rpx ;
+  position: relative ;
+}
+
+.login-icon {
+  display: inline-block;
+  width: 40rpx;
+  height: 40rpx;
+  overflow: hidden;
+}
+.login-icon.phone-icon{
+  position: absolute;
+  top: 25rpx;
+  left: 40rpx;
+}
+
+
+.input-placeholder{
+    font-family: PingFangSC-Regular;
+    font-size: 33rpx;
+    color: #BFBFBF;
+    letter-spacing: 0.59px;
+}
+
+.ui-cell input{
+  padding:20rpx 0 20rpx 80rpx;
+  font-size:32rpx;
+  color:#4A4A4A;
+
+}
+
+.cell-line{
+  width: calc(100% - 80rpx);
+  height: 2rpx;
+  background-color: #E6E6E6;
+  margin-left: 40rpx;
+}
+
+.ui-cell .code-input{
+   display: inline-block;
+    width: 60%;   
+  font-size: 14px;
+}
+.ui-cell .phone-input {
+  background: #F6F7F9
+}
+
+.ui-cell .btn-default {
+  display: inline-block;
+  width: 25%;
+  color: #00A0FF;
+  background:#2783F9;
+  font-size: 33rpx;
+}
+
+.ui-cell .btn-hover {
+  display: inline-block;
+  width: 25%;
+  color: #fff;
+  background-color: #D0D0D0;
+  font-size: 33rpx;
+
+}
+
+.ui-cell  button[disabled] {
+  background:#D0D0D0;
+}
+
+
+.login-enter{
+  position: relative;
+  top: 110rpx;
+}
+.phone-close {
+  position: absolute;
+  top: 25rpx;
+  right: 30rpx;
+  z-index: 10
+}
+
+.button{
+  height: 90rpx;
+  /* background-color: #00A0FF; */
+  color: #fff;
+   width: calc(100% - 80rpx);
+  margin-left: 40rpx;
+}
+ button[class="enter"]::after {
+  border: 0;
+} 
+.enter {
+  position: absolute;
+  text-align: center;
+  color: #fff;
+  z-index: 0;
+   width: calc(100% - 80rpx);
+    left: 50%; 
+   transform:translate(-50%,0);
+
+  height: 90rpx;
+  top: 0;
+  background:rgba(255,255,255,0) ;
+  border-width: 0 ;
+  border: none;
+}
